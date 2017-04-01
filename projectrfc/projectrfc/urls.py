@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from mainhandler import views as main_views
+from opinion import views as op_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r"^home/", main_views.home),
+    url(r"^factcheck/", op_views.fc_main),
+    url(r"^register/", op_views.register),
+    url(r"^submit/", op_views.save_comment),
+    url(r"^comment/", op_views.res_comment),
+    url(r"^vupdate/", op_views.v_update),
 ]

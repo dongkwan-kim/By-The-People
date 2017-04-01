@@ -1,0 +1,63 @@
+.my-container {
+    margin-top: 15px;
+}
+
+.my-nav, .brand-logo,
+.hide-on-med-and-down {
+    height: 40px;
+}
+
+nav li{
+    height: 40px!important;
+    line-height: 40px!important;
+}
+
+nav i {
+    font-size: 30px!important;
+}
+
+.brand-logo img {
+    height: 40px;
+    padding: 5px 0;
+}
+
+#under-video-tabs {
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.tabs .indicator {
+    background-color: black!important;
+}
+
+.tab > a {
+    color: black!important;
+}
+
+.tabs .tab a:hover {
+    color: #cccccc!important;
+}
+
+.mention img {
+    width: 100%;
+}
+
+.mention li {
+    word-wrap: break-word;
+}
+
+.mention ul {
+    margin: 0 -10px;
+}
+
+.dialogue {
+    padding: 15px 10px 10px 5px;
+    height: 600px;
+    overflow-y: scroll;
+}
+
+
+
+@media (max-width: 600px) {
+
+}

@@ -1,0 +1,67 @@
+.sentence {
+    cursor: pointer;
+}
+
+.medium-toolbar-arrow-over:before,
+.medium-toolbar-arrow-under:after {
+    border: none!important;
+}
+
+.medium-editor-anchor-preview,
+.medium-editor-toolbar {
+    z-index: 1000!important;
+}
+
+.fc-text u {
+    text-decoration: #666 underline;
+    background-color: rgba(180, 255, 0, 0.65);
+    cursor: pointer;
+}
+
+.submit-header {
+    background-color: rgba(180, 255, 0, 0.65);
+}
+
+.fc-submit {
+    padding: 0 10px!important;
+}
+
+#submit-form {
+    margin-bottom: 0px;
+}
+
+.f-undecided:hover {
+    background-color: rgba(128, 128, 128, 0.38)
+}
+
+.collapsible-body {
+    padding: 15px;
+}
+
+.thumb {
+    text-align: right;
+    margin-bottom: -10px;
+}
+
+.thumb-btn {
+    cursor: pointer;
+}
+
+.text-fact {
+    color: green;
+}
+
+.text-nonfact {
+    color: red;
+}
+
+#s-fccd9dd360c7de77be7c810023d50d60d9249d97de8f2a9e3ca5a0a9 {
+}
+
+#s-0b14e512e32f6bd588f92ec2b80f4b4d272a210e94489386f539c487 {
+    display: none;
+}
+
+.mention-2 {
+    display: none;      
+}

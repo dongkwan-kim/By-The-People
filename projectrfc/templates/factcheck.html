@@ -1,0 +1,328 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static "css/factcheck.css" %}">
+<script src="{% static "js/typed.js" %}"></script>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+    var player, playing = false;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('video', {
+            height: '360',
+            width: '640',
+            videoId: 'p23CoWCC-pU',
+            playerVars: { "start": 944 },
+            events: {
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    }
+
+    function onPlayerStateChange(event) {
+        if(!playing){
+            var s_id = "s-0b14e512e32f6bd588f92ec2b80f4b4d272a210e94489386f539c487";
+            var s_text = $("#"+s_id).text();
+            $("#"+s_id).text("")
+            $("#"+s_id).css("display", "list-item");
+            type("#"+s_id, s_text);
+            setTimeout(function(){
+                $(".mention-2").css("display", "block")
+            }, 1000)
+
+            playing = true;
+        }
+    }
+</script>
+
+<script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+
+<div class="my-container">
+    <div class="row">
+        <div class="col s12 m6 l5">
+            <div class="video-container module module-home-video">
+                <div id="video"></div>
+            </div>
+            <ul id="under-video-tabs" class="tabs">
+                <li class="tab col s3 l6"><a href="#fact-score">팩트 순위</a></li>
+                <li class="tab col s3 l6"><a href="#recent-fact">최근 핫한 팩트</a></li>
+            </ul>
+            <div id="fact-score" class="col s12">
+                <ul class="collection">
+                    <a class="collection-item avatar">
+                        <img src="https://pbs.twimg.com/profile_images/798463233774350336/KlHqUNgL.jpg" alt="" class="circle">
+                        <span class="title">문재인</span>
+                        <svg width="100%" height="10">
+                            <rect width="100%" height="10" style="fill:#4caf50" />
+                        </svg>
+                    </a>
+                    <a class="collection-item avatar">
+                        <img src="https://pbs.twimg.com/profile_images/3302121354/aba02dac9d648ffe61bad156371500e5_400x400.jpeg" alt="" class="circle">
+                        <span class="title">박근혜</span>
+                        <svg width="100%" height="10">
+                            <rect width="100%" height="10" style="fill:#4caf50" />
+                        </svg>
+                    </a>
+                    <a class="collection-item avatar">
+                        <img src="https://pbs.twimg.com/profile_images/378800000121509930/afd94caa68c8aafe95df496ef5350747.jpeg" alt="" class="circle">
+                        <span class="title">이정희</span>
+                        <svg width="100%" height="10">
+                            <rect width="100%" height="10" style="fill:#f44336" />
+                            <rect width="83%" height="10" style="fill:#9e9e9e" />
+                            <rect width="66%" height="10" style="fill:#4caf50" />
+                        </svg>
+                    </a>
+
+                </ul>
+            </div>
+            <div id="recent-fact" class="col s12">
+                <div class="collection">
+                    <a class="collection-item avatar">
+                        <img src="https://pbs.twimg.com/profile_images/378800000121509930/afd94caa68c8aafe95df496ef5350747.jpeg" alt="" class="circle">
+                        <span class="title">이정희</span>
+                        <p style="margin-top: 10px">박근혜 후보가 보여줬던 것처럼, 전태일 열사의 동상에 헌화하겠다고 쌍용차 노동자의 멱살을 잡아 끌어내는 것, 이것은 소통이 아니라 불통이다. </p>
+                        <span class="secondary-content new badge red" data-badge-caption="FALSE"></span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6 l7">
+            <div class="row dialogue z-depth-1">
+                <!--iteration start-->
+                {% for m in mention %}
+                <div class="row mention mention-{{forloop.counter}}">
+                    <div class="col s2">
+                        <img src="{{m.speaker.profile}}" alt="" class="circle tooltipped"
+                            data-position="bottom" data-delay="50" data-tooltip="{{m.speaker.name}}">
+                    </div>
+                    <div class="col s10">
+                        <ul class="collection">
+                            <li id="s-{{m.sid}}" class="collection-item fc-text">{{m.sentence}}</li>
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+                <!--iteration end-->
+            </div>
+        </div>
+    </div>
+
+    <div id="submit-modal" class="modal">
+        <div class="modal-content" style="padding-bottom: 0px;">
+            <h5 class="submit-header truncate">Modal Header</h5>
+            <div class="row">
+                <div class="col s6">
+                    <ul class="comment-nonfact collapsible" data-collapsible="accordion"></ul>  
+                </div>
+                <div class="col s6">
+                    <ul class="comment-fact collapsible" data-collapsible="accordion"></ul>
+                </div>
+            </div>
+			<form>
+				<div class="input-field col s12">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="submit-form" class="materialize-textarea"></textarea>
+                    <label for="submit-form">팩트폭격하세요</label>
+                </div>
+                <input type="hidden" id="hidden-uid" />
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="submit-btn modal-action modal-close waves-effect
+                waves-green btn-flat green-text">
+                팩트입니다
+            </a>
+            <a href="#!" class="submit-btn modal-action modal-close waves-effect
+                waves-red btn-flat red-text">
+                팩트가 아닙니다
+            </a>
+        </div>
+    </div>
+
+</div>
+<script>
+var editor = new MediumEditor('.fc-text', {
+    disableEditing: false,
+    spellcheck: false,
+    toolbar: {
+	    buttons: [{
+            name: 'underline',
+            contentDefault: '<i class="material-icons">check_circle</i>',
+            classList: ['fc-submit', "btn", "black", "waves-effect", "waves-light"],
+        }],
+    }
+});
+
+(function($){
+    $(function(){
+        $("#submit-modal").modal();
+        $(".dialogue").height($(window).height() - 100)
+    }); 
+})(jQuery);
+
+$(".fc-submit").click(function(){
+    var text = get_text(editor);
+	var uid = add_hash_to_u(editor);
+    
+    $(".comment-fact").empty();
+    $(".comment-nonfact").empty();
+    
+    $(".submit-header").text(text);
+    $("#hidden-uid").val(uid);
+
+    setTimeout(function(){
+        $('#submit-modal').modal("open");
+    }, 250);
+})
+
+$(".submit-btn").click(function(){
+    var huid = $("#hidden-uid").val();
+    var comment = $("#submit-form").val();
+    if($(this).hasClass("green-text")){
+        send_fc("fact", huid, comment);
+    } else {
+        send_fc("nonfact", huid, comment);
+    }
+})
+
+$("body").on("click", "u.fcu", function(){
+    var uid = $(this).attr("id");
+    open_comodal(uid)
+})
+
+$("body").on("click", ".thumb-btn", function(){
+    var hash_id = $(this).attr("id").split("-")[1]
+    var vhash_id = "#v-" + hash_id;
+    var update_vote = parseInt($(vhash_id).text()) + 1;
+    $(vhash_id).text(update_vote);
+    $.ajax({
+        type: "GET",
+        url: "/vupdate",
+        data: {
+            "hash_id": hash_id,
+            "update_vote": update_vote,
+        },
+        success: function(data, textStatus, jqXHR) {
+            console.log(data);
+        }
+    });
+})
+
+function type(selector, sentence){
+    function blog(x, y) {
+        return Math.log(y) / Math.log(x);
+    }
+    var start = 600;
+    var interval = 250;
+    var cnt = 10;
+    for(x of sentence.split(" ")){
+        var fake_uid = generate_uid(11);
+        start += interval * x.length - cnt;
+        cnt += blog(8, cnt);
+        $(selector).append("<span id="+fake_uid+"></span>")
+        $("#" + fake_uid).typed({
+            strings: [x+"&nbsp;"],
+            startDelay: start,
+            typeSpeed: interval,
+            loop:false,
+            showCursor: false
+        });    
+    }
+    
+}
+
+function send_fc(kind, uid, comment) {
+    $.ajax({
+        type: "GET",
+        url: "/submit",
+        data: {
+            "assert_kind": kind,
+            "uid": uid,
+            "comment" : comment
+        },
+        success: function(data, textStatus, jqXHR){
+            console.log(data);
+        }
+    }) 
+}
+
+function open_comodal(uid) {
+    $(".submit-header").text($("u#"+uid).text());
+    $("#submit-form").val("");
+    $(".comment-fact").empty();
+    $(".comment-nonfact").empty();
+    get_comment(uid)
+    setTimeout(function(){
+        $('#submit-modal').modal("open");
+    }, 250);
+}
+
+
+function get_comment(uid) {
+    $.ajax({
+        type: "GET",
+        url: "/comment",
+        data: {
+            "uid": uid,
+        },
+        success: function(data, textStatus, jqXHR){
+            var json = JSON.parse(data);
+            $("#hidden-uid").val(json[0].uid);
+            for(c of json){
+                var s = "";
+                s += '<li><div class="collapsible-header truncate text-'+ c.assert_kind +'">';
+                s += c.text.slice(0, 20);
+                s += '<span id="v-'+ c.hash_id + '" class="new badge" data-badge-caption="+">'
+                        + c.vote_up + "</span></div>";
+                s += '<div class="collapsible-body">' + c.text;
+                s += '<div class="thumb"><i id="th-' + c.hash_id
+                    +'" class="material-icons thumb-btn">thumb_up</i></div></div></li>';
+                $(".comment-"+c.assert_kind).append(s);
+            }
+        }
+    })
+}
+
+
+function get_text(editor){
+    var selection = editor.exportSelection();
+    var felem = editor.getFocusedElement();
+    return felem.innerText.slice(selection.start, selection.end)
+}
+
+function add_hash_to_u(editor) {
+	var felem = editor.getFocusedElement();
+    for(n of felem.childNodes) {
+        if(n.tagName == "U") {
+            var a = n.innerText.split(" ");
+            var b = get_text(editor).split(" ");
+            a = a.splice(1, a.length - 1).join(" ");
+            b = b.splice(1, b.length - 1).join(" ");
+            if(a == b) {
+                var uid = generate_uid(10)
+                $(n).attr("id", uid)
+                $(n).addClass("fcu")
+                return uid;
+            }
+        }
+    }
+    return -1;
+}
+
+function generate_uid(len) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (var i = 0; i < len; i++){
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+    return text;
+}
+
+function is_key(obj, key){
+    return (Object.keys(obj).indexOf(key+"") != -1);
+}
+</script>
+
+{% endblock %}
