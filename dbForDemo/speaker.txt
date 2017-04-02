@@ -1,0 +1,4 @@
+이정희,https://pbs.twimg.com/profile_images/378800000121509930/afd94caa68c8aafe95df496ef5350747.jpeg
+박근혜,https://pbs.twimg.com/profile_images/3302121354/aba02dac9d648ffe61bad156371500e5_400x400.jpeg
+문재인,https://pbs.twimg.com/profile_images/798463233774350336/KlHqUNgL.jpg
+사회자,http://13.124.44.202:23455/static/img/host.png
