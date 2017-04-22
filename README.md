@@ -1,5 +1,5 @@
 # By-The-People
-- Special mention of Seoul Editors Lab 31 March 2017 - 01 April 2017
+- `Special mention` of `Seoul Editors Lab` 31 March 2017 - 01 April 2017
 - Real-time Debate Fact Checking System By Crowd
 - This is only prototype
 
@@ -32,3 +32,10 @@ Our system needs two significant module: ‘Speech to Structured Text’, ‘Fac
 ## Links
 - [GEN Community Project](http://community.globaleditorsnetwork.org/content/bythepeople-0)
 - [Presentation](https://docs.google.com/viewerng/viewer?url=http://community.globaleditorsnetwork.org/sites/default/files/gen_hackathon.pdf)
+
+## Trivia
+- I reported a security issue of GEN Community website. It was unsecured at `XSS attack`.
+
+![xss1](https://raw.githubusercontent.com/todoaskit/realtime-fact-checker/master/img/xss1.png)
+
+![xss2](https://raw.githubusercontent.com/todoaskit/realtime-fact-checker/master/img/xss2.png)
