@@ -12,13 +12,13 @@ Our solution maximizes the power of collective intelligence to find facts in the
 
 This election, the truth will win By the People.
 
-![demo1](https://raw.githubusercontent.com/dongkwan-kim/realtime-fact-checker/master/img/demo1.png)
+![demo1](https://raw.githubusercontent.com/dongkwan-kim/By-The-People/master/img/demo1.png)
 
-![demo2](https://raw.githubusercontent.com/dongkwan-kim/realtime-fact-checker/master/img/demo2.png)
+![demo2](https://raw.githubusercontent.com/dongkwan-kim/By-The-People/master/img/demo2.png)
 
-![demo3](https://raw.githubusercontent.com/dongkwan-kim/realtime-fact-checker/master/img/demo3.png)
+![demo3](https://raw.githubusercontent.com/dongkwan-kim/By-The-People/master/img/demo3.png)
 
-![demo4](https://raw.githubusercontent.com/dongkwan-kim/realtime-fact-checker/master/img/demo4.png)
+![demo4](https://raw.githubusercontent.com/dongkwan-kim/By-The-People/master/img/demo4.png)
 
 
 ## Technologies used for this project
@@ -36,6 +36,6 @@ Our system needs two significant module: ‘Speech to Structured Text’, ‘Fac
 ## Trivia
 - I reported a security issue of GEN Community website. It was unsecured at `XSS attack`.
 
-![xss1](https://raw.githubusercontent.com/dongkwan-kim/realtime-fact-checker/master/img/xss1.png)
+![xss1](https://raw.githubusercontent.com/dongkwan-kim/By-The-People/master/img/xss1.png)
 
-![xss2](https://raw.githubusercontent.com/dongkwan-kim/realtime-fact-checker/master/img/xss2.png)
+![xss2](https://raw.githubusercontent.com/dongkwan-kim/By-The-People/master/img/xss2.png)
